@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Example Routes
-Route::view('/', 'home')->name('home');
+Route::get('/', function(){
+    $posts = Post::latest()->get();
+
+    return view('home', compact('posts'));
+})->name('home');
+
+
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
 });
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
+
+Route::get('posts', function(){
+    return Post::all();
+});
