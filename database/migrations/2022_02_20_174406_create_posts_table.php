@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->mediumText('except');
             $table->text('body');
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }

@@ -3,13 +3,12 @@
 
 @section('content')
   <!-- Hero -->
-  <div class="bg-image mb-0" style="background-image: url('media/photos/photo21@2x.jpg');">
-    <div class="bg-black-50">
-      <div class="content content-top content-full text-center">
-        <h1 class="fw-bold text-white">
-          Check out our latest stories
-        </h1>
-        <h3 class="fw-normal text-white-75 mb-5">Be inspired and create something amazing today.</h3>
+  <div class="bg-image my-2" style="background-image: url('media/photos/photo12@2x.jpg');">
+    <div class="bg-gd-white-op-r">
+      <div class="content py-6">
+        <h3 class="text-black-75 text-center text-sm-end mb-0">
+          Mis Blogs
+        </h3>
       </div>
     </div>
   </div>
@@ -86,7 +85,7 @@
         <!-- END Story #12 -->
       </div>
       @foreach($posts as $post)
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
         <a class="block block-rounded block-link-pop" href="javascript:void(0)">
             <div class="block-content pb-10 bg-image" style="background-image: url('media/photos/photo23@2x.jpg');">
               <span class="badge bg-danger fw-bold p-2 text-uppercase">
@@ -96,12 +95,64 @@
             <div class="block-content">
                 <h4 class="mb-1">{{ $post->title }}</h4>
                 <p class="fs-sm">
-                  <span class="text-primary">Susan Day</span> {{$post->created_at}} <span class="text-muted">14 min</span>
+                  <span class="text-primary">Susan Day</span> {{$post->published_at->format('M d')}} · <em class="text-muted">13 min</em>
                 </p>
                 <p>
                   {{$post->except}}
                 </p>
-              </div>
+            </div>
+            <div class="block-content block-content-full bg-body-light">
+                <div class="row g-0 fs-sm text-center">
+                  <div class="col-4">
+                    <span class="text-muted fw-semibold">
+                      <i class="fa fa-fw fa-eye opacity-50 me-1"></i> 890
+                    </span>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted fw-semibold">
+                      <i class="fa fa-fw fa-heart opacity-50 me-1"></i> 56
+                    </span>
+                  </div>
+                  <div class="col-4">
+                    <span class="text-muted fw-semibold">
+                      <i class="fa fa-fw fa-comments opacity-50 me-1"></i> 14
+                    </span>
+                  </div>
+                </div>
+            </div>
+
+            <div class="block-content block-content-full block-content-sm bg-dark bg-gradient fs-sm">
+                <div class="d-flex bd-highlight ">
+                    <div class="me-auto bd-highlight">
+                        <button type="button" class="btn btn-sm btn-alt-primary me-1 mb-0">
+                        <i class="fa fa-fw fa-eye me-1"></i> Read More
+                        </button>
+                    </div>
+                    <div class="bd-highlight">
+                        <div class="btn-group" role="group" aria-label="Horizontal Alternate Secondary">
+                            <button type="button" class="btn btn-sm btn-alt-secondary text-sm">#Yosemite</button>
+                            <button type="button" class="btn btn-sm btn-alt-secondary">#Peak</button>
+                            <button type="button" class="btn btn-sm btn-alt-secondary">#Explorer</button>
+                            <button type="button" class="btn btn-sm btn-alt-secondary">#Explorer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="block-content block-content-full bg-body-light">
+                <div class="row g-sm">
+                  <div class="col-6">
+                    <a class="btn btn-sm w-100 btn-alt-secondary" href="javascript:void(0)">
+                      <i class="fa fa-user-plus me-1 text-muted"></i> Add People
+                    </a>
+                  </div>
+                  <div class="col-6">
+                    <a class="btn btn-sm w-100 btn-alt-secondary" href="javascript:void(0)">
+                      <i class="fa fa-eye me-1 text-muted"></i> View
+                    </a>
+                  </div>
+                </div>
+            </div> --}}
           </a>
       </div>
       @endforeach
