@@ -86,7 +86,7 @@
       ''                                          Full width Main Content if no class is added
       'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
       'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-        
+
     DARK MODE
 
       'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
@@ -352,6 +352,10 @@
               <a class="nav-main-link" href="/">
                 <i class="nav-main-link-icon fa fa-globe"></i>
                 <span class="nav-main-link-name">Landing</span>
+              </a>
+              <a class="nav-main-link" href="/">
+                <i class="nav-main-link-icon fa fa-arrow-alt-circle-left"></i>
+                <span class="nav-main-link-name">Sign Out</span>
               </a>
             </li>
           </ul>
