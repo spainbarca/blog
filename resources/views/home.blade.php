@@ -86,10 +86,10 @@
       </div>
       @foreach($posts as $post)
       <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-        <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+        <a class="block block-rounded block-link-pop shadow" href="javascript:void(0)">
             <div class="block-content pb-10 bg-image" style="background-image: url('media/photos/photo23@2x.jpg');">
               <span class="badge bg-danger fw-bold p-2 text-uppercase">
-                Inspiration
+                {{$post->category->name}}
               </span>
             </div>
             <div class="block-content">
