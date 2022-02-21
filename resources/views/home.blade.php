@@ -86,7 +86,7 @@
       </div>
       @foreach($posts as $post)
       <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-        <a class="block block-rounded block-link-pop shadow" href="javascript:void(0)">
+        <a class="block block-rounded block-link-pop" href="javascript:void(0)">
             <div class="block-content pb-10 bg-image" style="background-image: url('media/photos/photo23@2x.jpg');">
               <span class="badge bg-danger fw-bold p-2 text-uppercase">
                 {{$post->category->name}}
@@ -130,29 +130,13 @@
                     </div>
                     <div class="bd-highlight">
                         <div class="btn-group" role="group" aria-label="Horizontal Alternate Secondary">
-                            <button type="button" class="btn btn-sm btn-alt-secondary text-sm">#Yosemite</button>
-                            <button type="button" class="btn btn-sm btn-alt-secondary">#Peak</button>
-                            <button type="button" class="btn btn-sm btn-alt-secondary">#Explorer</button>
-                            <button type="button" class="btn btn-sm btn-alt-secondary">#Explorer</button>
+                            @foreach ($post->tags as $tag)
+                                <button type="button" class="btn btn-sm btn-alt-secondary text-sm">#{{ $tag->name }}</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="block-content block-content-full bg-body-light">
-                <div class="row g-sm">
-                  <div class="col-6">
-                    <a class="btn btn-sm w-100 btn-alt-secondary" href="javascript:void(0)">
-                      <i class="fa fa-user-plus me-1 text-muted"></i> Add People
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-sm w-100 btn-alt-secondary" href="javascript:void(0)">
-                      <i class="fa fa-eye me-1 text-muted"></i> View
-                    </a>
-                  </div>
-                </div>
-            </div> --}}
           </a>
       </div>
       @endforeach
