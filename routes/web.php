@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     $posts = Post::latest()->get();
 
-    return view('home', compact('posts'));
+    return view('landing', compact('posts'));
 })->name('home');
 
 

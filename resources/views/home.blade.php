@@ -1,4 +1,4 @@
-@extends('layouts.simple')
+{{-- @extends('layouts.simple')
 
 
 @section('content')
@@ -146,4 +146,4 @@
   <!-- END Page Content -->
 </main>
 <!-- END Main Container -->
-@endsection
+@endsection --}}
