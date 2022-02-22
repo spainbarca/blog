@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,5 @@ Route::view('/pages/blank', 'pages.blank');
 Route::get('posts', function(){
     return Post::all();
 });
+
+Auth::routes();
