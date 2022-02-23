@@ -23,6 +23,7 @@
   @yield('css_before')
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" id="css-main" href="{{ mix('css/dashmix.css') }}">
+  <link href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css" rel="stylesheet">
 
   <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
   <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('css/themes/xwork.css') }}"> -->
@@ -310,59 +311,9 @@
         </div>
       </div>
       <!-- END Side Header -->
-
+      @include('admin.partials.nav')
       <!-- Sidebar Scrolling -->
-      <div class="js-sidebar-scroll">
-        <!-- Side Navigation -->
-        <div class="content-side content-side-full">
-          <ul class="nav-main">
-            <li class="nav-main-item">
-              <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
-                <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                <span class="nav-main-link-name">Dashboard</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary">5</span>
-              </a>
-            </li>
-            <li class="nav-main-heading">Various</li>
-            <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                <i class="nav-main-link-icon fa fa-lightbulb"></i>
-                <span class="nav-main-link-name">Examples</span>
-              </a>
-              <ul class="nav-main-submenu">
-                <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">
-                    <span class="nav-main-link-name">DataTables</span>
-                  </a>
-                </li>
-                <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}" href="/pages/slick">
-                    <span class="nav-main-link-name">Slick Slider</span>
-                  </a>
-                </li>
-                <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
-                    <span class="nav-main-link-name">Blank</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-main-heading">More</li>
-            <li class="nav-main-item">
-              <a class="nav-main-link" href="/">
-                <i class="nav-main-link-icon fa fa-globe"></i>
-                <span class="nav-main-link-name">Landing</span>
-              </a>
-              <a class="nav-main-link" href="/">
-                <i class="nav-main-link-icon fa fa-arrow-alt-circle-left"></i>
-                <span class="nav-main-link-name">Sign Out</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- END Side Navigation -->
-      </div>
-      <!-- END Sidebar Scrolling -->
+
     </nav>
     <!-- END Sidebar -->
 
@@ -575,7 +526,7 @@
   <!-- END Page Container -->
 
   <!-- Dashmix Core JS -->
-  <script src="{{ mix('js/dashmix.app.js') }}"></script>
+  <script src='js/dashmix.app.min.js'gapi_processed="true"></script>
 
   <!-- Laravel Original JS -->
   <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->
