@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+App::setlocale("es");
 
 // Example Routes
 Route::get('/', function(){
@@ -25,7 +26,8 @@ Route::get('/', function(){
 
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
-});
+})->middleware('auth');
+
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');

@@ -120,32 +120,43 @@
                 <a class="link-fx fw-bold fs-1" href="index.html">
                   <span class="text-dark">Spain</span><span class="text-primary">Barca</span>
                 </a>
-                <p class="text-uppercase fw-bold fs-sm text-muted">Sign In</p>
+                <p class="text-uppercase fw-bold fs-sm text-muted">{{ __('Sign In') }}</p>
               </div>
-              <form class="js-validation-signin" action="be_pages_auth_all.html" method="POST" novalidate="novalidate">
+              <form class="js-validation-signin" method="POST" action="{{ route('login') }}" >
+                @csrf
                 <div class="mb-4">
                   <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" id="login-username" name="login-username" placeholder="Username">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
                     <span class="input-group-text">
                       <i class="fa fa-user-circle"></i>
                     </span>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="mb-4">
                   <div class="input-group input-group-lg">
-                    <input type="password" class="form-control" id="login-password" name="login-password" placeholder="Password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required>
                     <span class="input-group-text">
                       <i class="fa fa-asterisk"></i>
                     </span>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="d-sm-flex justify-content-sm-between align-items-sm-center text-center text-sm-start mb-4">
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="login-remember-me" name="login-remember-me" checked="">
+                    <input type="checkbox" class="form-check-input" id="login-remember-me" name="login-remember-me" checked="" {{ old('login-remember-me') ? 'checked' : '' }}>
                     <label class="form-check-label" for="login-remember-me">Remember Me</label>
                   </div>
                   <div class="fw-semibold fs-sm py-1">
-                    <a href="javascript:void(0)">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
                   </div>
                 </div>
                 <div class="text-center mb-4">
