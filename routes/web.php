@@ -1,8 +1,12 @@
 <?php
 
+
 use App\Models\Post;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Admin\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +21,11 @@ use Illuminate\Support\Facades\Route;
 App::setlocale("es");
 
 // Example Routes
-Route::get('/', function(){
-    $posts = Post::latest()->get();
+Route::get('/', [PagesController::class, 'home'])->name('home');
 
-    return view('landing', compact('posts'));
-})->name('home');
-
+Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
+    Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
+});
 
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
