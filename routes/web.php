@@ -25,6 +25,7 @@ Route::get('/', [PagesController::class, 'home'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
     Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');
+    Route::get('posts/create', [PostsController::class, 'create'])->name('admin.posts.create');
 });
 
 Route::match(['get', 'post'], '/admin', function(){

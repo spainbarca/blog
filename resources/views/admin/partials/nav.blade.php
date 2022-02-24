@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_comp_onboarding.html">
+                        <a class="nav-main-link{{ request()->is('admin/posts/create') ? ' active' : '' }}" href="{{ route('admin.posts.create') }}">
                             <i class="nav-main-link-icon fa fa-folder-plus"></i>
                             <span class="nav-main-link-name">Add Post</span>
                         </a>

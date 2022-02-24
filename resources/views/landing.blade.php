@@ -98,7 +98,7 @@
                   <span class="text-primary">Susan Day</span> {{$post->published_at->format('M d')}} · <em class="text-muted">13 min</em>
                 </p>
                 <p>
-                  {{$post->except}}
+                  {{$post->excerpt}}
                 </p>
             </div>
             <div class="block-content block-content-full bg-body-light">

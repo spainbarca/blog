@@ -142,7 +142,7 @@
                                     </a>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{$post->except}}
+                                    {{$post->excerpt}}
                                 </td>
                                 <td class="d-none d-xl-table-cell">
                                     <a href="be_pages_generic_profile.html">{{$post->category->name}}</a>
