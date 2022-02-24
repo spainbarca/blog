@@ -526,7 +526,7 @@
   <!-- END Page Container -->
 
   <!-- Dashmix Core JS -->
-  <script src='js/dashmix.app.min.js'gapi_processed="true"></script>
+  <script src='/js/dashmix.app.min.js' gapi_processed="true"></script>
 
   <!-- Laravel Original JS -->
   <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->

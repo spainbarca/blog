@@ -24,7 +24,7 @@ App::setlocale("es");
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
-    Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
+    Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');
 });
 
 Route::match(['get', 'post'], '/dashboard', function(){

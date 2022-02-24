@@ -45,7 +45,7 @@
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_comp_chat.html">
+                        <a class="nav-main-link" href="{{ route('admin.posts.index') }}">
                             <i class="nav-main-link-icon fa fa-folder-tree"></i>
                             <span class="nav-main-link-name">Manage Posts</span>
                         </a>
@@ -65,7 +65,7 @@
                 </ul>
             </li>
 
-            <li class="nav-main-item open">
+            <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                     aria-expanded="true" href="#">
                     <i class="nav-main-link-icon fa fa-cog"></i>
