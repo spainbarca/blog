@@ -27,9 +27,9 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
     Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');
 });
 
-Route::match(['get', 'post'], '/dashboard', function(){
+Route::match(['get', 'post'], '/admin', function(){
     return view('dashboard');
-})->middleware('auth');
+})->middleware('auth')->name('dashboard');
 
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
