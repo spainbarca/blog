@@ -89,10 +89,12 @@
                                         <input type="text" class="form-control" id="dm-post-add-title" name="title"
                                             placeholder="Enter a title..">
                                     </div>
-                                    <div class="row mb-4">
-                                        <div class="col-xl-6">
-                                            <label class="form-label" for="dm-post-add-image">Featured Image</label>
-                                            <input class="form-control" type="file" id="dm-post-add-image">
+                                    <div class="mb-4">
+                                        <label class="form-label" for="dm-post-add-excerpt">Excerpt</label>
+                                        <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt" rows="3"
+                                            placeholder="Enter an excerpt.."></textarea>
+                                        <div class="form-text">Visible on blog post list as a small description of the
+                                            post.
                                         </div>
                                     </div>
                                     <div class="mb-4">
@@ -110,7 +112,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
                             <a class="fw-medium" href="javascript:void(0)">
-                                Add Post
+                                Select options
                                 <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                             </a>
                         </div>
@@ -142,13 +144,14 @@
                                     </select>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="dm-post-add-excerpt">Excerpt</label>
-                                    <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt" rows="3"
-                                        placeholder="Enter an excerpt.."></textarea>
-                                    <div class="form-text">Visible on blog post list as a small description of the
-                                        post.
-                                    </div>
-                                </div>
+                                    <label class="form-label" for="val-select2-multiple">Select2 Multiple <span class="text-danger">*</span></label>
+                                    <select class="js-select2 form-select" id="val-select2-multiple" name="val-select2-multiple" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
+                                      <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                      @foreach ($tags as $tag)
+                                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                        @endforeach
+                                    </select>
+                                  </div>
                             </div>
                         </div>
 
