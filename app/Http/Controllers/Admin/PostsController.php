@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Tag;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -42,7 +43,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->excerpt = $request->get('excerpt');
+        $post->published_at = Carbon::parse($request->get('published_at'));
+        $post->category_id = $request->get('category_id');
+        //etiquetas
+        $post->save();
+
+        $post->tags()->attach($request->get('tags'));
+        return back()->with('flash', 'Tu publicación ha sido creada');
     }
 
     /**

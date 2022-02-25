@@ -33,9 +33,14 @@
     <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
+    <script src="{{ asset('js/pages/be_forms_validation.min.js') }}"></script>
+
+    <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <script>
-        Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-select2']);
+        Dashmix.helpersOnLoad(['jq-notify', 'js-flatpickr', 'jq-datepicker', 'jq-select2']);
     </script>
 
     <script>
@@ -43,6 +48,13 @@
             CKEDITOR.config.height = '450px';
             Dashmix.helpers(['js-ckeditor']);
         });
+    </script>
+
+    <script>
+        $(".js-select2").select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        })
     </script>
 @endsection
 
@@ -65,7 +77,8 @@
     <!-- END Page Content -->
 
     <div class="content content-full">
-        <form action="be_pages_blog_post_add.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+        <form class="js-validation" action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data" novalidate="novalidate">
+            @csrf
             <div class="row">
                 <div class="col-xl-8">
                     <div class="block block-rounded block-mode-loading-refresh">
@@ -85,13 +98,13 @@
                             <div class="row justify-content-center push">
                                 <div class="col-md-10">
                                     <div class="mb-4">
-                                        <label class="form-label" for="dm-post-add-title">Title</label>
-                                        <input type="text" class="form-control" id="dm-post-add-title" name="title"
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" class="form-control" id="title" name="title"
                                             placeholder="Enter a title..">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label" for="dm-post-add-excerpt">Excerpt</label>
-                                        <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt" rows="3"
+                                        <label class="form-label" for="excerpt">Excerpt</label>
+                                        <textarea class="form-control" id="excerpt" name="excerpt" rows="3"
                                             placeholder="Enter an excerpt.."></textarea>
                                         <div class="form-text">Visible on blog post list as a small description of the
                                             post.
@@ -120,21 +133,21 @@
 
                             <div class="col-md-11">
                                 <div class="mb-4">
-                                    <label class="form-label" for="example-flatpickr-custom">Custom format</label>
+                                    <label class="form-label" for="published_at">Custom format</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-primary btn-icon" (click)="d.toggle()">
                                                 <i class="fa-solid fa-calendar-lines-pen"></i>
                                             </button>
                                         </span>
-                                        <input type="text" class="js-flatpickr form-control" id="example-flatpickr-custom"
-                                        name="example-flatpickr-custom" placeholder="d-m-Y" data-date-format="d-m-Y">
+                                        <input type="text" class="js-flatpickr form-control" id="published_at"
+                                        name="published_at" placeholder="d-m-Y" data-date-format="d-m-Y">
                                    </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="val-select2">Select2 <span
+                                    <label class="form-label" for="category">Select2 <span
                                             class="text-danger">*</span></label>
-                                    <select class="js-select2 form-select" id="val-select2" name="val-select2"
+                                    <select class="js-select2 form-select" id="category" name="category_id"
                                         style="width: 100%;" data-placeholder="Choose one..">
                                         <option></option>
                                         <!-- Required for data-placeholder attribute to work with Select2 plugin -->
@@ -144,10 +157,10 @@
                                     </select>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="val-select2-multiple">Select2 Multiple <span class="text-danger">*</span></label>
-                                    <select class="js-select2 form-select" id="val-select2-multiple" name="val-select2-multiple" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
+                                    <label class="form-label" for="tags">Select2 Multiple <span class="text-danger">*</span></label>
+                                    <select class="js-select2 form-select" id="tags" name="tags[]" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
                                       <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                      @foreach ($tags as $tag)
+                                        @foreach ($tags as $tag)
                                             <option value="{{$tag->id}}">{{$tag->name}}</option>
                                         @endforeach
                                     </select>
@@ -174,6 +187,9 @@
                                     class="d-inline-block px-3 py-1 rounded-pill fs-sm fw-semibold text-warning bg-warning-light">
                                     5% of portfolio
                                 </div>
+                                <button type="button" class="js-notify btn btn-alt-success push" data-type="success" data-icon="fa fa-check me-1" data-message="App was updated successfully to 1.2 version">
+                                    <i class="fa fa-bell me-1 opacity-50"></i> Launch Notification
+                                  </button>
                             </div>
                         </div>
                         <div class="block-content bg-body-light">

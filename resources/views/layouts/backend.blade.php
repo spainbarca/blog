@@ -503,6 +503,7 @@
 
     <!-- Main Container -->
     <main id="main-container">
+
       @yield('content')
     </main>
     <!-- END Main Container -->
@@ -530,8 +531,17 @@
 
   <!-- Laravel Original JS -->
   <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->
-
   @yield('js_after')
+
+  <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
+    @if (session()->has('flash'))
+        @php $mensaje = session('flash'); @endphp
+        <script>
+        Dashmix.helpers('jq-notify', {type: 'success', icon: 'fa fa-check me-1', message: '<?php echo $mensaje;?>'});
+        </script>
+    @endif
+
 </body>
 
 </html>
