@@ -2,18 +2,27 @@
 
 @section('css_before')
     <!-- Page JS Plugins CSS -->
-    <style>.cke{visibility:hidden;}</style>
+    <style>
+        .cke {
+            visibility: hidden;
+        }
+
+    </style>
 
     <link rel="stylesheet" href="{{ asset('js/plugins/ckeditor/skins/moono-lisa/editor.css?t=LAHF') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css?t=LAHF') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/ckeditor/plugins/scayt/dialogs/dialog.css?t=LAHF') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/ckeditor/plugins/tableselection/styles/tableselection.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/ckeditor/plugins/dialog/styles/dialog.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
 @endsection
 
 @section('js_after')
     <!-- jQuery (required for DataTables plugin) -->
-
+    <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 
     <!-- Page JS Code -->
     <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -21,13 +30,20 @@
     <script src="{{ asset('js/plugins/ckeditor/lang/en.js?t=LAHF') }}"></script>
     <script src="{{ asset('js/plugins/ckeditor/styles.js?t=LAHF') }}"></script>
 
+    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        Dashmix.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-select2']);
+    </script>
+
     <script>
         Dashmix.onLoad(function() {
             CKEDITOR.config.height = '450px';
             Dashmix.helpers(['js-ckeditor']);
         });
     </script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-16158021-6');</script>
 @endsection
 
 @section('content')
@@ -48,57 +64,123 @@
     </div>
     <!-- END Page Content -->
 
-    <div class="content content-full content-boxed">
+    <div class="content content-full">
         <form action="be_pages_blog_post_add.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
-            <div class="block">
-                <div class="block-header block-header-default">
-                    <a class="btn btn-alt-secondary" href="be_pages_blog_post_manage.html">
-                        <i class="fa fa-arrow-left me-1"></i> Manage Posts
-                    </a>
-                    <div class="block-options">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" value="" id="dm-post-add-active"
-                                name="dm-post-add-active">
-                            <label class="form-check-label" for="dm-post-add-active">Set active</label>
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="block block-rounded block-mode-loading-refresh">
+                        <div class="block-header block-header-default">
+                            <a class="btn btn-alt-secondary" href="be_pages_blog_post_manage.html">
+                                <i class="fa fa-arrow-left me-1"></i> Manage Posts
+                            </a>
+                            <div class="block-options">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" value="" id="dm-post-add-active"
+                                        name="dm-post-add-active">
+                                    <label class="form-check-label" for="dm-post-add-active">Set active</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-content">
+                            <div class="row justify-content-center push">
+                                <div class="col-md-10">
+                                    <div class="mb-4">
+                                        <label class="form-label" for="dm-post-add-title">Title</label>
+                                        <input type="text" class="form-control" id="dm-post-add-title" name="title"
+                                            placeholder="Enter a title..">
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-xl-6">
+                                            <label class="form-label" for="dm-post-add-image">Featured Image</label>
+                                            <input class="form-control" type="file" id="dm-post-add-image">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.jsCkeditor()) -->
+                                        <!-- For more info and examples you can check out http://ckeditor.com -->
+                                        <label class="form-label">Body</label>
+                                        <textarea id="js-ckeditor" name="body"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="block-content">
-                    <div class="row justify-content-center push">
-                        <div class="col-md-10">
-                            <div class="mb-4">
-                                <label class="form-label" for="dm-post-add-title">Title</label>
-                                <input type="text" class="form-control" id="dm-post-add-title" name="title"
-                                    placeholder="Enter a title..">
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label" for="dm-post-add-excerpt">Excerpt</label>
-                                <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt"
-                                    rows="3" placeholder="Enter an excerpt.."></textarea>
-                                <div class="form-text">Visible on blog post list as a small description of the post.
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-xl-6">
-                                    <label class="form-label" for="dm-post-add-image">Featured Image</label>
-                                    <input class="form-control" type="file" id="dm-post-add-image">
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.jsCkeditor()) -->
-                                <!-- For more info and examples you can check out http://ckeditor.com -->
-                                <label class="form-label">Body</label>
-                                <textarea id="js-ckeditor" name="body"></textarea>
-                              </div>
+                <div class="col-xl-4 d-flex flex-column">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
+                            <a class="fw-medium" href="javascript:void(0)">
+                                Add Post
+                                <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                            </a>
                         </div>
+                        <div class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
+
+                            <div class="col-md-11">
+                                <div class="mb-4">
+                                    <label class="form-label" for="example-flatpickr-custom">Custom format</label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary btn-icon" (click)="d.toggle()">
+                                                <i class="fa-solid fa-calendar-lines-pen"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" class="js-flatpickr form-control" id="example-flatpickr-custom"
+                                        name="example-flatpickr-custom" placeholder="d-m-Y" data-date-format="d-m-Y">
+                                   </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="val-select2">Select2 <span
+                                            class="text-danger">*</span></label>
+                                    <select class="js-select2 form-select" id="val-select2" name="val-select2"
+                                        style="width: 100%;" data-placeholder="Choose one..">
+                                        <option></option>
+                                        <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="dm-post-add-excerpt">Excerpt</label>
+                                    <textarea class="form-control" id="dm-post-add-excerpt" name="excerpt" rows="3"
+                                        placeholder="Enter an excerpt.."></textarea>
+                                    <div class="form-text">Visible on blog post list as a small description of the
+                                        post.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-                <div class="block-content bg-body-light">
-                    <div class="row justify-content-center push">
-                        <div class="col-md-10">
-                            <button type="submit" class="btn btn-alt-primary">
-                                <i class="fa fa-fw fa-check opacity-50 me-1"></i> Create Post
-                            </button>
+                    <div class="block block-rounded text-center d-flex flex-column flex-grow-1">
+                        <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
+                            <a class="fw-medium" href="javascript:void(0)">
+                                Select images
+                                <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                            </a>
+                        </div>
+                        <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
+                            <div class="w-100">
+                                <div class="item rounded-3 bg-body mx-auto my-3">
+                                    <i class="fa fa-archive fa-lg text-primary"></i>
+                                </div>
+                                <div class="fs-1 fw-bold">75</div>
+                                <div class="text-muted mb-3">Products out of stock</div>
+                                <div
+                                    class="d-inline-block px-3 py-1 rounded-pill fs-sm fw-semibold text-warning bg-warning-light">
+                                    5% of portfolio
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-content bg-body-light">
+                            <div class="row justify-content-center push">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-alt-primary">
+                                        <i class="fa fa-fw fa-check opacity-50 me-1"></i> Create Post
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
