@@ -100,12 +100,12 @@
                                     <div class="mb-4">
                                         <label class="form-label" for="title">Title</label>
                                         <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Enter a title..">
+                                            placeholder="Enter a title.." value="{{old('title')}}">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label" for="excerpt">Excerpt</label>
                                         <textarea class="form-control" id="excerpt" name="excerpt" rows="3"
-                                            placeholder="Enter an excerpt.."></textarea>
+                                            placeholder="Enter an excerpt..">{{old('excerpt')}}</textarea>
                                         <div class="form-text">Visible on blog post list as a small description of the
                                             post.
                                         </div>
@@ -114,7 +114,7 @@
                                         <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.jsCkeditor()) -->
                                         <!-- For more info and examples you can check out http://ckeditor.com -->
                                         <label class="form-label">Body</label>
-                                        <textarea id="js-ckeditor" name="body"></textarea>
+                                        <textarea id="js-ckeditor" name="body">{{old('body')}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
 
                             <div class="col-md-11">
                                 <div class="mb-4">
-                                    <label class="form-label" for="published_at">Custom format</label>
+                                    <label class="form-label" for="published_at">Date Published</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-primary btn-icon" (click)="d.toggle()">
@@ -141,18 +141,18 @@
                                             </button>
                                         </span>
                                         <input type="text" class="js-flatpickr form-control" id="published_at"
-                                        name="published_at" placeholder="d-m-Y" data-date-format="d-m-Y">
+                                        name="published_at" placeholder="d-m-Y" data-date-format="d-m-Y" value="{{old('published_at')}}">
                                    </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="category">Select2 <span
+                                    <label class="form-label" for="category">Category <span
                                             class="text-danger">*</span></label>
                                     <select class="js-select2 form-select" id="category" name="category_id"
                                         style="width: 100%;" data-placeholder="Choose one..">
                                         <option></option>
                                         <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach ($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            <option value="{{$category->id}}" {{old('category') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -161,7 +161,7 @@
                                     <select class="js-select2 form-select" id="tags" name="tags[]" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
                                       <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach ($tags as $tag)
-                                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                            <option {{collect(old('tags'))->contains($tag->id) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->name}}</option>
                                         @endforeach
                                     </select>
                                   </div>
