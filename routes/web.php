@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ App::setlocale("es");
 
 // Example Routes
 Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('blog/{id}', [BlogsController::class, 'show'])->name('blog');
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
     Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');

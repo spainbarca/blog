@@ -18,7 +18,7 @@
         <div class="d-none d-lg-block">
           <ul class="nav-main nav-main-horizontal nav-main-hover">
             <li class="nav-main-item">
-              <a class="nav-main-link active" href="gs_landing.html">
+              <a class="nav-main-link active" href="/">
                 <i class="nav-main-link-icon fa fa-home"></i>
                 <span class="nav-main-link-name">Home</span>
               </a>
@@ -55,49 +55,49 @@
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xwork.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xwork.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xwork"></i>
                     <span class="nav-main-link-name">xWork</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xmodern.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xmodern.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xmodern"></i>
                     <span class="nav-main-link-name">xModern</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xeco.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xeco.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xeco"></i>
                     <span class="nav-main-link-name">xEco</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xsmooth.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xsmooth.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xsmooth"></i>
                     <span class="nav-main-link-name">xSmooth</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="themes/xinspire.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xinspire.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xinspire"></i>
                     <span class="nav-main-link-name">xInspire</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xdream.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xdream.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xdream"></i>
                     <span class="nav-main-link-name">xDream</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xpro.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xpro.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xpro"></i>
                     <span class="nav-main-link-name">xPro</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link" data-toggle="theme" data-theme="css/themes/xplay.min.css" href="#">
+                  <a class="nav-main-link" data-toggle="theme" data-theme="{{ mix('/css/themes/xplay.css') }}" href="#">
                     <i class="nav-main-link-icon fa fa-circle text-xplay"></i>
                     <span class="nav-main-link-name">xPlay</span>
                   </a>

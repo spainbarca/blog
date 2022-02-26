@@ -124,7 +124,7 @@
             <div class="block-content block-content-full block-content-sm bg-dark bg-gradient fs-sm">
                 <div class="d-flex bd-highlight ">
                     <div class="me-auto bd-highlight">
-                        <button type="button" class="btn btn-sm btn-alt-primary me-1 mb-0">
+                        <button type="button" class="btn btn-sm btn-alt-primary me-1 mb-0" onclick="location.href='blog/{{$post->id}}'">
                         <i class="fa fa-fw fa-eye me-1"></i> Read More
                         </button>
                     </div>
