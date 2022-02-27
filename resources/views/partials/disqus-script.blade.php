@@ -41,7 +41,7 @@
     <div class="pt-3 fs-sm">
         <div class="d-flex">
             <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
-                <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/avatar8.jpg" alt="">
+                <img class="img-avatar img-avatar32 img-avatar-thumb" src="{{ asset('media/avatars/avatar8.jpg') }}" alt="">
             </a>
             <div class="flex-grow-1">
                 <p class="mb-1">
@@ -56,7 +56,7 @@
                 </p>
                 <div class="d-flex">
                     <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/avatar9.jpg"
+                        <img class="img-avatar img-avatar32 img-avatar-thumb" src="{{ asset('media/avatars/avatar9.jpg') }}"
                             alt="">
                     </a>
                     <div class="flex-grow-1">
@@ -75,7 +75,7 @@
         </div>
         <div class="d-flex">
             <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
-                <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/avatar13.jpg" alt="">
+                <img class="img-avatar img-avatar32 img-avatar-thumb" src="{{ asset('media/avatars/avatar13.jpg') }}" alt="">
             </a>
             <div class="flex-grow-1">
                 <p class="mb-1">
@@ -93,7 +93,7 @@
                 </p>
                 <div class="d-flex">
                     <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar32 img-avatar-thumb" src="assets/media/avatars/avatar11.jpg"
+                        <img class="img-avatar img-avatar32 img-avatar-thumb" src="{{ asset('media/avatars/avatar11.jpg') }}"
                             alt="">
                     </a>
                     <div class="flex-grow-1">

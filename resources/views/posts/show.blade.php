@@ -1,5 +1,8 @@
 @extends('layouts.simple')
 
+@section('meta-title', $post->title. ' | Dashmix')
+@section('meta-description', $post->excerpt)
+
 @section('css_before')
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('js/plugins/magnific-popup/magnific-popup.css') }}">

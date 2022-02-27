@@ -12,6 +12,16 @@ class Post extends Model
     protected $guarded = [];
     protected $dates = ['published_at'];
 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'title';
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -25,7 +35,7 @@ class Post extends Model
     public function scopePublished($query)
     {
         $query->whereNotNull('published_at')
-        ->where('published_at', '<=', Carbon::now())
-        ->latest('published_at');
+            ->where('published_at', '<=', Carbon::now())
+            ->latest('published_at');
     }
 }
