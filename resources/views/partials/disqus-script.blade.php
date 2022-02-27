@@ -9,23 +9,7 @@
             <i class="fa fa-heart text-danger"></i>
         </button>
     </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-alt-secondary dropdown-toggle" id="dropdown-blog-story"
-            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-share-alt opacity-50 me-1"></i> Share
-        </button>
-        <div class="dropdown-menu dropdown-menu-end fs-sm" aria-labelledby="dropdown-blog-story">
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="fab fa-fw fa-facebook me-1"></i> Facebook
-            </a>
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="fab fa-fw fa-twitter me-1"></i> Twitter
-            </a>
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="fab fa-fw fa-linkedin me-1"></i> LinkedIn
-            </a>
-        </div>
-    </div>
+    @include('partials.social-links', ['description' => $post->title])
 </div>
 <div class="px-4 pt-4 rounded bg-body-extra-light">
     <p class="fs-sm">
