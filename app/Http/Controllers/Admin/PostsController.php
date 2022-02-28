@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Tag;
-use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -18,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::published()->get();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -44,19 +45,15 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required'
-        ]);
-        $post = new Post;
-        $post->title = $request->get('title');
-        $post->body = $request->get('body');
-        $post->excerpt = $request->get('excerpt');
-        $post->published_at = $request->has('published_at') ? Carbon::parse($request->get('published_at')) : NULL;
-        $post->category_id = $request->get('category_id');
-        //etiquetas
-        $post->save();
+                'title' => 'required',
+             ]);
 
-        $post->tags()->attach($request->get('tags'));
-        return back()->with('flash', 'Tu publicación ha sido creada');
+        $post = Post::create([
+            'title' => $request->get('title'),
+            'url' => Str::slug($request->get('title')),
+        ]);
+
+        return redirect()->route('admin.posts.edit',$post);
     }
 
     /**
@@ -76,9 +73,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+
+        $categories=Category::all();
+        $tags=Tag::all();
+        return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
 
     /**
@@ -88,9 +88,28 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Post $post, Request $request)
     {
-        //
+         $this->validate($request, [
+             'title' => 'required',
+             'excerpt' => 'required',
+             'body' => 'required',
+             'category' => 'required',
+             'tags' => 'required'
+         ]);
+
+         $post->title = $request->get('title');
+
+         $post->url = Str::slug($request->get('title'));
+         $post->body = $request->get('body');
+         $post->excerpt = $request->get('excerpt');
+         $post->published_at = $request->has('published_at') ? Carbon::parse($request->get('published_at')) : null;
+         $post->category_id = $request->get('category');
+         //etiquetas
+         $post->save();
+
+         $post->tags()->sync($request->get('tags'));
+         return back()->with('flash', 'Tu publicación ha sido creada');
     }
 
     /**

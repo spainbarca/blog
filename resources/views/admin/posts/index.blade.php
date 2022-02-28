@@ -51,7 +51,7 @@
                                 <i class="far fa-2x fa-file-alt text-primary"></i>
                             </div>
                             <p class="fs-4 fw-bold mb-0">
-                                {{$posts->count()}}
+                                {{ $posts->count() }}
                             </p>
                             <p class="text-muted mb-0">
                                 All Posts
@@ -115,7 +115,11 @@
 
         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Listado de Posts ({{$posts->count()}})</h3>
+                <h3 class="block-title">Listado de Posts ({{ $posts->count() }})</h3>
+                <button type="button" class="btn btn-alt-success me-1 pull-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="fa fa-fw fa-plus opacity-50 me-1"></i> Add Post
+                </button>
+
             </div>
             <div class="block-content">
                 <table class="table table-striped table-borderless table-vcenter nowrap js-dataTable-buttons">
@@ -130,25 +134,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($posts as $post)
+                        @foreach ($posts as $post)
                             <tr>
                                 <td>
-                                    {{$post->id}}
+                                    {{ $post->id }}
                                 </td>
                                 <td>
                                     <i class="fa fa-eye text-success me-1"></i>
                                     <a href="be_pages_blog_story.html">
-                                        {{$post->title}}
+                                        {{ $post->title }}
                                     </a>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{$post->excerpt}}
+                                    {{ $post->excerpt }}
                                 </td>
                                 <td class="d-none d-xl-table-cell">
-                                    <a href="be_pages_generic_profile.html">{{$post->category->name}}</a>
+                                    <a href="be_pages_generic_profile.html">{{ $post->category->name }}</a>
                                 </td>
                                 <td class="d-none d-xl-table-cell">
-                                    {{$post->published_at->diffForHumans()}}
+                                    {{ $post->published_at->diffForHumans() }}
                                 </td>
                                 <td class="text-center">
                                     <a class="btn btn-sm btn-alt-secondary" href="be_pages_blog_post_edit.html">

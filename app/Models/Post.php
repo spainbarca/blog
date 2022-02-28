@@ -19,7 +19,7 @@ class Post extends Model
      */
     public function getRouteKeyName()
     {
-        return 'title';
+        return 'url';
     }
 
     public function category()

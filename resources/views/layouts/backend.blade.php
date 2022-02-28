@@ -542,6 +542,7 @@
         </script>
     @endif
 
+    @include('admin.posts.create')
 </body>
 
 </html>

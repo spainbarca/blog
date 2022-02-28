@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Post;
 use Carbon\Carbon;
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
@@ -18,6 +19,7 @@ class PostTableSeeder extends Seeder
     {
         Post::truncate();
         Category::truncate();
+        Tag::truncate();
 
         $category=new Category;
         $category->name = "Categoría 1";
@@ -35,6 +37,8 @@ class PostTableSeeder extends Seeder
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 1']));
+
         $post = new Post;
         $post->title = "Mi segundo post";
         $post->except = "Extracto de mi segundo post";
@@ -42,6 +46,8 @@ class PostTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(4);
         $post->category_id = 1;
         $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 2']));
 
         $post = new Post;
         $post->title = "Mi tercer post";
@@ -51,6 +57,8 @@ class PostTableSeeder extends Seeder
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 3']));
+
         $post = new Post;
         $post->title = "Mi cuarto post";
         $post->except = "Extracto de mi cuarto post";
@@ -59,6 +67,8 @@ class PostTableSeeder extends Seeder
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 4']));
+
         $post = new Post;
         $post->title = "Mi quinto post";
         $post->except = "Extracto de mi quinto post";
@@ -66,5 +76,7 @@ class PostTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id = 1;
         $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 5']));
     }
 }
