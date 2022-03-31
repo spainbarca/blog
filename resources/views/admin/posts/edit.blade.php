@@ -61,12 +61,21 @@
     </script>
 
     <script>
-        new Dropzone('.dropzone', {
+        var myDropzone = new Dropzone('.dropzone', {
             url: '/admin/posts/{{ $post->url }}/photos',
+            acceptedFiles: 'image/*',
+            maxFilesize: .5,
+            maxFiles: 5,
+            paramName: 'photo',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }, 
             dictDefaultMessage: 'Arrastra las fotos aquí para subirlas',
+        });
+
+        myDropzone.on('error', function(file, res){
+            var msg = res.photo[0];
+            $('.dz-error-message > span').text(msg);
         });
 
         Dropzone.autoDiscover=false;
