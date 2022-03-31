@@ -12,8 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="example-text-input-floating" name="title"
-                            placeholder="Enter a title.." value="{{ old('title') }}">
+                        <input type="text" class="form-control" id="title" name="title"
+                            placeholder="Enter a title.." value="{{ old('title') }}" required>
                         <label class="form-label" for="example-text-input-floating">Title</label>
                     </div>
                 </div>

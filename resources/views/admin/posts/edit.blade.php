@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" referrerpolicy="no-referrer" />
 @endsection
 
 @section('js_after')
@@ -38,6 +40,7 @@
     <script src="{{ asset('js/pages/be_forms_validation.min.js') }}"></script>
 
     <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"> </script>
 
     <script>
         Dashmix.helpersOnLoad(['jq-notify', 'js-flatpickr', 'jq-datepicker', 'jq-select2']);
@@ -55,6 +58,18 @@
             tags: true,
             tokenSeparators: [',', ' ']
         })
+    </script>
+
+    <script>
+        new Dropzone('.dropzone', {
+            url: '/admin/posts/{{ $post->url }}/photos',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }, 
+            dictDefaultMessage: 'Arrastra las fotos aquí para subirlas',
+        });
+
+        Dropzone.autoDiscover=false;
     </script>
 @endsection
 
@@ -179,7 +194,7 @@
                         </div>
                         <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
                             <div class="w-100">
-                                <div class="item rounded-3 bg-body mx-auto my-3">
+                                <!-- <div class="item rounded-3 bg-body mx-auto my-3">
                                     <i class="fa fa-archive fa-lg text-primary"></i>
                                 </div>
                                 <div class="fs-1 fw-bold">75</div>
@@ -190,7 +205,10 @@
                                 </div>
                                 <button type="button" class="js-notify btn btn-alt-success push" data-type="success" data-icon="fa fa-check me-1" data-message="App was updated successfully to 1.2 version">
                                     <i class="fa fa-bell me-1 opacity-50"></i> Launch Notification
-                                  </button>
+                                  </button> -->
+                                <div class="dropzone">
+
+                                </div>
                             </div>
                         </div>
                         <div class="block-content bg-body-light">

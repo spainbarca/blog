@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\PhotosController;
 use App\Http\Controllers\BlogsController;
 
 /*
@@ -31,6 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
     Route::post('posts', [PostsController::class, 'store'])->name('admin.posts.store');
     Route::get('posts/{post}', [PostsController::class, 'edit'])->name('admin.posts.edit');
     Route::put('posts/{post}', [PostsController::class, 'update'])->name('admin.posts.update');
+
+    Route::post('posts/{post}/photos', [PhotosController::class, 'store'])->name('admin.posts.photos.store');
 });
 
 Route::match(['get', 'post'], '/admin', function(){
