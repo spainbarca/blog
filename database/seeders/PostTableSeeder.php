@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
@@ -31,7 +32,8 @@ class PostTableSeeder extends Seeder
 
         $post = new Post;
         $post->title = "Mi primer post";
-        $post->except = "Extracto de mi primer post";
+        $post->url = Str::slug($post->title);
+        $post->excerpt = "Extracto de mi primer post";
         $post->body = "<p>Contenido de mi primer post</p>";
         $post->published_at = Carbon::now();
         $post->category_id = 1;
@@ -41,7 +43,8 @@ class PostTableSeeder extends Seeder
 
         $post = new Post;
         $post->title = "Mi segundo post";
-        $post->except = "Extracto de mi segundo post";
+        $post->url = Str::slug($post->title);
+        $post->excerpt = "Extracto de mi segundo post";
         $post->body = "<p>Contenido de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(4);
         $post->category_id = 1;
@@ -51,7 +54,8 @@ class PostTableSeeder extends Seeder
 
         $post = new Post;
         $post->title = "Mi tercer post";
-        $post->except = "Extracto de mi tercer post";
+        $post->url = Str::slug($post->title);
+        $post->excerpt = "Extracto de mi tercer post";
         $post->body = "<p>Contenido de mi tercer post</p>";
         $post->published_at = Carbon::now()->subDays(3);
         $post->category_id = 1;
@@ -61,7 +65,8 @@ class PostTableSeeder extends Seeder
 
         $post = new Post;
         $post->title = "Mi cuarto post";
-        $post->except = "Extracto de mi cuarto post";
+        $post->url = Str::slug($post->title);
+        $post->excerpt = "Extracto de mi cuarto post";
         $post->body = "<p>Contenido de mi cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(2);
         $post->category_id = 1;
@@ -71,7 +76,8 @@ class PostTableSeeder extends Seeder
 
         $post = new Post;
         $post->title = "Mi quinto post";
-        $post->except = "Extracto de mi quinto post";
+        $post->url = Str::slug($post->title);
+        $post->excerpt = "Extracto de mi quinto post";
         $post->body = "<p>Contenido de mi quinto post</p>";
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id = 1;

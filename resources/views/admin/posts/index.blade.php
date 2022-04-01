@@ -155,7 +155,10 @@
                                     {{ $post->published_at->diffForHumans() }}
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-sm btn-alt-secondary" href="be_pages_blog_post_edit.html">
+                                    <a class="btn btn-sm btn-alt-secondary" target="_blank" href="{{ route('blog', $post)}}">
+                                        <i class="fa fa-fw fa-eye text-dark"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-alt-secondary" href="{{ route('admin.posts.edit', $post)}}">
                                         <i class="fa fa-fw fa-pencil-alt text-warning"></i>
                                     </a>
                                     <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
