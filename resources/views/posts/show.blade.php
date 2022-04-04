@@ -6,6 +6,8 @@
 @section('css_before')
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{ asset('js/plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/slick-carousel/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/slick-carousel/slick-theme.css') }}">
 @endsection
 
 @section('js_after')
@@ -13,9 +15,11 @@
     <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
     <!-- Page JS Code -->
     <script src="{{ asset('js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <!-- Slick Carousel -->
+    <script src="{{ asset('js/plugins/slick-carousel/slick.min.js') }}"></script>
 
     <script>
-        Dashmix.helpersOnLoad(['jq-magnific-popup']);
+        Dashmix.helpersOnLoad(['jq-magnific-popup', 'jq-slick']);
     </script>
 @endsection
 
@@ -66,10 +70,30 @@
                                 <button type="button" class="btn btn-sm btn btn-outline-secondary text-sm">#{{ $tag->name }}</button>
                             @endforeach
                         </div>
-                      </div>
+                    </div>
+                    @if ($post->photos->count())
+                    <div class="col-md-12">
+                        <!-- Slider with autoplay and white inner dots -->
+                        <div class="block">
+                          <div class="block-header block-header-default">
+                            <h3 class="block-title">
+                              <i class="fa fa-play fa-fw text-primary"></i> Autoplay &amp; White Inner Dots
+                            </h3>
+                          </div>
+                          <div class="js-slider slick-dotted-inner slick-dotted-white" data-dots="true" data-autoplay="true" data-autoplay-speed="3000">
+                            @foreach ($post->photos as $photo)
+                                <div>
+                                    <img class="img-fluid" src="{{ url($photo->url) }}" alt="">
+                                </div>
+                            @endforeach
+                          </div>
+                        </div>
+                        <!-- END Slider with autoplay and white inner dots -->
+                    </div>
+                    @endif
+
                     @include('partials.disqus-script')
                 </div>
-
             </div>
         </div>
     </main>

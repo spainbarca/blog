@@ -87,7 +87,13 @@
       @foreach($posts as $post)
       <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
         <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-            <div class="block-content pb-10 bg-image" style="background-image: url('media/photos/photo23@2x.jpg');">
+            <div
+            @if ($post->photos->count())
+            class="block-content pb-10 bg-image" style="background-image: url('{{$post->photos->first()->url}}');"
+            @else
+            class="block-content pb-6 bg-image" style="background-image: url('https://www.teahub.io/photos/full/303-3034192_default-banner-banner-jpg.jpg');"
+            @endif
+            >
               <span class="badge bg-danger fw-bold p-2 text-uppercase">
                 {{$post->category->name}}
               </span>
@@ -105,7 +111,7 @@
                 <div class="row g-0 fs-sm text-center">
                   <div class="col-4">
                     <span class="text-muted fw-semibold">
-                      <i class="fa fa-fw fa-eye opacity-50 me-1"></i> 890
+                      <i class="fa fa-fw fa-images opacity-50 me-1"></i> {{$post->photos->count()}}
                     </span>
                   </div>
                   <div class="col-4">
