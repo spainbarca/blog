@@ -27,7 +27,11 @@
     <!-- Hero -->
 
     <main id="main-container">
+        @if ($post->photos->count())
+        <div class="bg-image" style="background-image: url('{{$post->photos->first()->url}}');">
+        @else
         <div class="bg-image" style="background-image: url('../media/photos/photo22@2x.jpg');">
+        @endif
             <div class="bg-black-75">
                 <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
                     <p>
@@ -83,7 +87,7 @@
                           <div class="js-slider slick-dotted-inner slick-dotted-white" data-dots="true" data-autoplay="true" data-autoplay-speed="3000">
                             @foreach ($post->photos as $photo)
                                 <div>
-                                    <img class="img-fluid" src="{{ url($photo->url) }}" alt="">
+                                    <img class="bg-image" src="{{ url($photo->url) }}" alt="" style="min-width: 100%;height: 600px;" >
                                 </div>
                             @endforeach
                           </div>
@@ -91,7 +95,6 @@
                         <!-- END Slider with autoplay and white inner dots -->
                     </div>
                     @endif
-
                     @include('partials.disqus-script')
                 </div>
             </div>
