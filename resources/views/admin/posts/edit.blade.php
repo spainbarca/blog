@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/js/plugins/magnific-popup/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+        referrerpolicy="no-referrer" />
 @endsection
 
 @section('js_after')
@@ -40,10 +42,11 @@
     <script src="{{ asset('js/pages/be_forms_validation.min.js') }}"></script>
 
     <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"> </script>
 
     <script>
-        Dashmix.helpersOnLoad(['jq-notify', 'js-flatpickr', 'jq-datepicker', 'jq-select2']);
+        Dashmix.helpersOnLoad(['jq-notify', 'js-flatpickr', 'jq-datepicker', 'jq-select2', 'jq-magnific-popup']);
     </script>
 
     <script>
@@ -72,13 +75,13 @@
             },
             dictDefaultMessage: 'Arrastra las fotos aquí para subirlas',
         });
-/*
-        myDropzone.on('error', function(file, res){
-            var msg = res.photo;
-            $('.dz-error-message > span').text(msg);
-        }); */
+        /*
+                myDropzone.on('error', function(file, res){
+                    var msg = res.photo;
+                    $('.dz-error-message > span').text(msg);
+                }); */
 
-        Dropzone.autoDiscover=false;
+        Dropzone.autoDiscover = false;
     </script>
 @endsection
 
@@ -101,7 +104,8 @@
     <!-- END Page Content -->
 
     <div class="content content-full">
-        <form class="js-validation" action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
+        <form class="js-validation" action="{{ route('admin.posts.update', $post) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -125,12 +129,12 @@
                                     <div class="mb-4">
                                         <label class="form-label" for="title">Title</label>
                                         <input type="text" class="form-control" id="title" name="title"
-                                            placeholder="Enter a title.." value="{{old('title', $post->title)}}">
+                                            placeholder="Enter a title.." value="{{ old('title', $post->title) }}">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label" for="excerpt">Excerpt</label>
                                         <textarea class="form-control" id="excerpt" name="excerpt" rows="3"
-                                            placeholder="Enter an excerpt..">{{old('excerpt', $post->excerpt)}}</textarea>
+                                            placeholder="Enter an excerpt..">{{ old('excerpt', $post->excerpt) }}</textarea>
                                         <div class="form-text">Visible on blog post list as a small description of the
                                             post.
                                         </div>
@@ -139,8 +143,9 @@
                                         <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.jsCkeditor()) -->
                                         <!-- For more info and examples you can check out http://ckeditor.com -->
                                         <label class="form-label">Body</label>
-                                        <textarea id="js-ckeditor" name="body">{{old('body', $post->body)}}</textarea>
+                                        <textarea id="js-ckeditor" name="body">{{ old('body', $post->body) }}</textarea>
                                     </div>
+                                    <!-- Advanced Gallery -->
                                 </div>
                             </div>
                         </div>
@@ -154,7 +159,8 @@
                                 <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                             </a>
                         </div>
-                        <div class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
+                        <div
+                            class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
 
                             <div class="col-md-11">
                                 <div class="mb-4">
@@ -166,8 +172,9 @@
                                             </button>
                                         </span>
                                         <input type="text" class="js-flatpickr form-control" id="published_at"
-                                        name="published_at" placeholder="d-m-Y" data-date-format="d-m-Y" value="{{old('published_at', $post->published_at ? $post->published_at->format('m/d/Y') : null)}}">
-                                   </div>
+                                            name="published_at" placeholder="d-m-Y" data-date-format="d-m-Y"
+                                            value="{{ old('published_at', $post->published_at ? $post->published_at->format('m/d/Y') : null) }}">
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="category">Category <span
@@ -177,19 +184,26 @@
                                         <option></option>
                                         <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach ($categories as $category)
-                                            <option value="{{$category->id}}" {{old('category', $post->category_id) == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ old('category', $post->category_id) == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="tags">Select2 Multiple <span class="text-danger">*</span></label>
-                                    <select class="js-select2 form-select" id="tags" name="tags[]" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
-                                      <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    <label class="form-label" for="tags">Select2 Multiple <span
+                                            class="text-danger">*</span></label>
+                                    <select class="js-select2 form-select" id="tags" name="tags[]" style="width: 100%;"
+                                        data-placeholder="Choose at least two.." multiple>
+                                        <option></option>
+                                        <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach ($tags as $tag)
-                                            <option {{collect(old('tags', $post->tags->pluck('id')))->contains($tag->id) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->name}}</option>
+                                            <option
+                                                {{ collect(old('tags', $post->tags->pluck('id')))->contains($tag->id) ? 'selected' : '' }}
+                                                value="{{ $tag->id }}">{{ $tag->name }}</option>
                                         @endforeach
                                     </select>
-                                  </div>
+                                </div>
                             </div>
                         </div>
 
@@ -204,17 +218,17 @@
                         <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
                             <div class="w-100">
                                 <!-- <div class="item rounded-3 bg-body mx-auto my-3">
-                                    <i class="fa fa-archive fa-lg text-primary"></i>
-                                </div>
-                                <div class="fs-1 fw-bold">75</div>
-                                <div class="text-muted mb-3">Products out of stock</div>
-                                <div
-                                    class="d-inline-block px-3 py-1 rounded-pill fs-sm fw-semibold text-warning bg-warning-light">
-                                    5% of portfolio
-                                </div>
-                                <button type="button" class="js-notify btn btn-alt-success push" data-type="success" data-icon="fa fa-check me-1" data-message="App was updated successfully to 1.2 version">
-                                    <i class="fa fa-bell me-1 opacity-50"></i> Launch Notification
-                                  </button> -->
+                                                    <i class="fa fa-archive fa-lg text-primary"></i>
+                                                </div>
+                                                <div class="fs-1 fw-bold">75</div>
+                                                <div class="text-muted mb-3">Products out of stock</div>
+                                                <div
+                                                    class="d-inline-block px-3 py-1 rounded-pill fs-sm fw-semibold text-warning bg-warning-light">
+                                                    5% of portfolio
+                                                </div>
+                                                <button type="button" class="js-notify btn btn-alt-success push" data-type="success" data-icon="fa fa-check me-1" data-message="App was updated successfully to 1.2 version">
+                                                    <i class="fa fa-bell me-1 opacity-50"></i> Launch Notification
+                                                  </button> -->
                                 <div class="dropzone">
 
                                 </div>
@@ -233,5 +247,57 @@
                 </div>
             </div>
         </form>
+        @if ($post->photos->count())
+            <div class="block block-rounded text-center d-flex flex-column flex-grow-1">
+                <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
+                    <a class="fw-medium" href="javascript:void(0)">
+                        Imágenes
+                        <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                    </a>
+                </div>
+                <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
+                    <div class="w-100">
+                        <div
+                            class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
+
+                            <div class="col-md-12">
+                                <div class="row items-push js-gallery">
+
+                                    @foreach ($post->photos as $photo)
+                                        <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
+                                            <div class="options-container fx-item-zoom-in fx-overlay-zoom-out">
+                                                <img class="img-fluid options-item" src="{{ url($photo->url) }}" alt="">
+                                                <div class="options-overlay bg-black-75">
+                                                    <form method="POST"
+                                                        action="{{ route('admin.photos.destroy', $photo) }}">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <div class="options-overlay-content">
+                                                            {{-- <h5 class="h5 text-white text-sm mb-1">Title</h5> --}}
+                                                            {{-- <h6 class="h6 text-white-75 mb-3">Más Info</h6> --}}
+                                                            <a class="btn btn-sm btn-primary img-lightbox"
+                                                                href="{{ url($photo->url) }}">
+                                                                <i class="fa fa-search-plus opacity-50 me-1"></i> Ver
+                                                            </a>
+
+                                                            <button class="btn btn-sm btn-danger">
+                                                                <i class="fa fa-trash-can opacity-50 me-1"></i> Borrar
+                                                            </button>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
     </div>
 @endsection
