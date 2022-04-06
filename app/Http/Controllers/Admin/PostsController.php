@@ -103,6 +103,8 @@ class PostsController extends Controller
          $post->url = Str::slug($request->get('title'));
          $post->body = $request->get('body');
          $post->excerpt = $request->get('excerpt');
+         $post->youtube = $request->get('youtube');
+         $post->soundcloud = $request->get('soundcloud');
          $post->published_at = $request->has('published_at') ? Carbon::parse($request->get('published_at')) : null;
          $post->category_id = $request->get('category');
          //etiquetas

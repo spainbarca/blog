@@ -159,8 +159,7 @@
                                 <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                             </a>
                         </div>
-                        <div
-                            class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
+                        <div class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
 
                             <div class="col-md-11">
                                 <div class="mb-4">
@@ -208,27 +207,46 @@
                         </div>
 
                     </div>
-                    <div class="block block-rounded text-center d-flex flex-column flex-grow-1">
+
+
+                    <div class="block block-rounded">
                         <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
                             <a class="fw-medium" href="javascript:void(0)">
-                                Select images
+                                Select multimedia
                                 <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                             </a>
                         </div>
+                        <div class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
+
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label class="form-label" for="youtube">Youtube Video</label>
+                                      <div class="input-group">
+                                        <button type="button" class="btn btn-secondary">
+                                          <i class="fa-brands fa-youtube"></i>
+                                        </button>
+                                        <span class="input-group-text input-group-text-alt">www.youtube.com/watch?v=</span>
+                                        <input type="text" class="form-control form-control" id="youtube" name="youtube" placeholder="ID" value="{{ old('youtube', $post->youtube) }}">
+                                      </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="soundcloud">SoundCloud Audio</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-danger">
+                                          <i class="fa-brands fa-soundcloud"></i>
+                                        </button>
+                                        <input type="text" class="form-control form-control-alt" id="soundcloud" name="soundcloud" placeholder="iframe" value="{{ old('soundcloud', $post->soundcloud) }}">
+                                        <button type="button" class="btn btn-alt-danger">
+                                          <i class="fa-solid fa-list-music"></i>
+                                        </button>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="block-content block-content-full d-flex align-items-center flex-grow-1">
+
                             <div class="w-100">
-                                <!-- <div class="item rounded-3 bg-body mx-auto my-3">
-                                                    <i class="fa fa-archive fa-lg text-primary"></i>
-                                                </div>
-                                                <div class="fs-1 fw-bold">75</div>
-                                                <div class="text-muted mb-3">Products out of stock</div>
-                                                <div
-                                                    class="d-inline-block px-3 py-1 rounded-pill fs-sm fw-semibold text-warning bg-warning-light">
-                                                    5% of portfolio
-                                                </div>
-                                                <button type="button" class="js-notify btn btn-alt-success push" data-type="success" data-icon="fa fa-check me-1" data-message="App was updated successfully to 1.2 version">
-                                                    <i class="fa fa-bell me-1 opacity-50"></i> Launch Notification
-                                                  </button> -->
+
                                 <div class="dropzone">
 
                                 </div>
@@ -238,7 +256,7 @@
                             <div class="row justify-content-center push">
                                 <div class="col-md-10">
                                     <button type="submit" class="btn btn-alt-primary">
-                                        <i class="fa fa-fw fa-check opacity-50 me-1"></i> Create Post
+                                        <i class="fa fa-fw fa-check opacity-50 me-2"></i> Create Post
                                     </button>
                                 </div>
                             </div>

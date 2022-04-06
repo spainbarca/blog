@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('url')->nullable();
             $table->mediumText('excerpt')->nullable();
             $table->text('body')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('soundcloud')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
