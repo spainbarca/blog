@@ -216,6 +216,7 @@
         <!-- END Cover Link Stories -->
     </div>
     <!-- END Page Content -->
+    {!!$posts->links()!!}
     </main>
     <!-- END Main Container -->
 @endsection
