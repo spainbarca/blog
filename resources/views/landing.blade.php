@@ -20,6 +20,7 @@
 
 
 @section('content')
+
     <!-- Hero -->
     <div class="bg-image my-2" style="background-image: url('media/photos/photo12@2x.jpg');">
         <div class="bg-gd-white-op-r">
@@ -34,6 +35,9 @@
 
     <!-- Page Content -->
     <div class="content">
+        @if (isset($category))
+    <h3>Publicaciones de la categoría {{$category->name}}</h3>
+@endif
         <!-- Cover Link Stories -->
         <h2 class="content-heading">Cover Link Stories</h2>
         <div class="row items-push">
@@ -162,7 +166,19 @@
                         @endif
 
                         <div class="block-content">
-                            <h4 class="mb-1">{{ $post->title }}</h4>
+                            <div class="row text-center">
+                                <div class="col-sm-6 col-lg-6 d-flex flex-row">
+                                    <h3>{{ $post->title }}</h3>
+                                </div>
+                                <div class="col-sm-6 col-lg-6 d-flex flex-row-reverse">
+                                  <div class="block block-rounded">
+                                    <button class="badge bg-danger fw-bold p-2 text-uppercase" onclick="location.href='{{route('categories.show', $post->category)}}';">
+                                        {{ $post->category->name }}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+
                             <p class="fs-sm">
                                 <span class="text-primary">Susan Day</span> {{ $post->published_at->format('M d') }} ·
                                 <em class="text-muted">13 min</em>
