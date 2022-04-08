@@ -48,10 +48,7 @@ class PostsController extends Controller
                 'title' => 'required',
              ]);
 
-        $post = Post::create([
-            'title' => $request->get('title'),
-            'url' => Str::slug($request->get('title')),
-        ]);
+        $post = Post::create($request->only('title'));
 
         return redirect()->route('admin.posts.edit',$post);
     }
@@ -99,8 +96,6 @@ class PostsController extends Controller
          ]);
 
          $post->title = $request->get('title');
-
-         $post->url = Str::slug($request->get('title'));
          $post->body = $request->get('body');
          $post->excerpt = $request->get('excerpt');
          $post->youtube = $request->get('youtube');
