@@ -18,7 +18,6 @@ class Post extends Model
      * @return string
      */
 
-
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\PhotosController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ App::setlocale("es");
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('blog/{post}', [BlogsController::class, 'show'])->name('blog');
 Route::get('categorias/{category}', [CategoriesController::class, 'show'])->name('categories.show');
+Route::get('tags/{tag}', [TagsController::class, 'show'])->name('tags.show');
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function(){
     Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');

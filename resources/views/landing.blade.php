@@ -35,9 +35,9 @@
 
     <!-- Page Content -->
     <div class="content">
-        @if (isset($category))
-    <h3>Publicaciones de la categoría {{$category->name}}</h3>
-@endif
+        @if (isset($title))
+            <h3>{{$title}}</h3>
+        @endif
         <!-- Cover Link Stories -->
         <h2 class="content-heading">Cover Link Stories</h2>
         <div class="row items-push">
@@ -219,7 +219,7 @@
                                     <div class="btn-group" role="group" aria-label="Horizontal Alternate Secondary">
                                         @foreach ($post->tags as $tag)
                                             <button type="button"
-                                                class="btn btn-sm btn-alt-secondary text-sm">#{{ $tag->name }}</button>
+                                                class="btn btn-sm btn-alt-secondary text-sm" onclick="location.href='{{route('tags.show', $tag)}}';">#{{ $tag->name }}</button>
                                         @endforeach
                                     </div>
                                 </div>
