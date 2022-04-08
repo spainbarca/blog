@@ -59,7 +59,7 @@
     <script>
         $(".js-select2").select2({
             tags: true,
-            tokenSeparators: [',', ' ']
+            tokenSeparators: [',']
         })
     </script>
 
