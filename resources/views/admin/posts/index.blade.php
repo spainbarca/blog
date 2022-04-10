@@ -161,9 +161,13 @@
                                     <a class="btn btn-sm btn-alt-secondary" href="{{ route('admin.posts.edit', $post)}}">
                                         <i class="fa fa-fw fa-pencil-alt text-warning"></i>
                                     </a>
-                                    <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
-                                        <i class="fa fa-fw fa-times text-danger"></i>
-                                    </a>
+                                    <form method="POST" action="{{ route('admin.posts.destroy', $post) }}" style="display: inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-alt-secondary" onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?')">
+                                            <i class="fa fa-fw fa-times text-danger"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
