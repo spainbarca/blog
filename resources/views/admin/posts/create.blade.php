@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <form class="js-validation" action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data"
+    <form class="js-validation" action="{{ route('admin.posts.store', '#create') }}" method="POST" enctype="multipart/form-data"
         novalidate="novalidate">
         @csrf
         <div class="modal-dialog">
@@ -12,8 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="title" name="title"
-                            placeholder="Enter a title.." value="{{ old('title') }}" required>
+                        <input type="text" class="form-control" id="post-title" name="title"
+                            placeholder="Enter a title.." value="{{ old('title') }}" autofocus required>
                         <label class="form-label" for="example-text-input-floating">Title</label>
                     </div>
                 </div>

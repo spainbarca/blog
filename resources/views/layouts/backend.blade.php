@@ -535,6 +535,7 @@
 
   <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
+  <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
     @if (session()->has('flash'))
         @php $mensaje = session('flash'); @endphp
         <script>
@@ -543,6 +544,26 @@
     @endif
 
     @include('admin.posts.create')
+    @unless (request()->is('admin/posts/*'))
+    <script>
+
+        if (window.location.hash === '#create')
+        {
+            $(function() {
+                $('#staticBackdrop').modal('show');
+            });
+        }
+
+        $('#staticBackdrop').on('hide.bs.modal', function(){
+            window.location.hash = '#';
+        });
+
+        $('#staticBackdrop').on('shown.bs.modal', function(){
+            $('#post-title').focus();
+            window.location.hash = '#create';
+        });
+    </script>
+@endunless
 </body>
 
 </html>
