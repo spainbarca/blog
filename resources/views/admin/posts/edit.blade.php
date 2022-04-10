@@ -176,15 +176,15 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="category">Category <span
+                                    <label class="form-label" for="category_id">Category <span
                                             class="text-danger">*</span></label>
-                                    <select class="js-select2 form-select" id="category" name="category"
+                                    <select class="js-select2 form-select" id="category_id" name="category_id"
                                         style="width: 100%;" data-placeholder="Choose one..">
                                         <option></option>
                                         <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
-                                                {{ old('category', $post->category_id) == $category->id ? 'selected' : '' }}>
+                                                {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}</option>
                                         @endforeach
                                     </select>

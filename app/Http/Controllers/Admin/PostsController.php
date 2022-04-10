@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 
 class PostsController extends Controller
 {
@@ -85,38 +86,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Post $post, Request $request)
+    public function update(Post $post, StorePostRequest $request)
     {
-         $this->validate($request, [
-             'title' => 'required',
-             'excerpt' => 'required',
-             'body' => 'required',
-             'category' => 'required',
-             'tags' => 'required'
-         ]);
+        $post->update($request->all());
 
-         $post->title = $request->get('title');
-         $post->body = $request->get('body');
-         $post->excerpt = $request->get('excerpt');
-         $post->youtube = $request->get('youtube');
-         $post->soundcloud = $request->get('soundcloud');
-         $post->published_at = $request->has('published_at') ? Carbon::parse($request->get('published_at')) : null;
-         $post->category_id = Category::find($cat = $request->get('category'))
-            ? $cat
-            : Category::create(['name' => $cat])->id;
-         //etiquetas
-         $post->save();
-
-         $tags = [];
-
-         foreach($request->get('tags') as $tag)
-         {
-             $tags[] = Tag::find($tag)
-                        ? $tag
-                        : Tag::create(['name' => $tag])->id;
-         }
-
-         $post->tags()->sync($tags);
+         $post->syncTags($request->get('tags'));
          return redirect()->route('admin.posts.edit', $post)->with('flash', 'Tu publicación ha sido creada');
     }
 
