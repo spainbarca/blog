@@ -5,7 +5,7 @@
       <!-- Left Section -->
       <div class="d-flex align-items-center">
         <!-- Logo -->
-        <a class="link-fx fs-lg fw-semibold text-dark" href="index.html">
+        <a class="link-fx fs-lg fw-semibold text-dark" href="/">
           My<span class="text-primary"> Blog</span>
         </a>
         <!-- END Logo -->
@@ -18,25 +18,25 @@
         <div class="d-none d-lg-block">
           <ul class="nav-main nav-main-horizontal nav-main-hover">
             <li class="nav-main-item">
-              <a class="nav-main-link active" href="/">
+              <a class="nav-main-link {{setActiveRoute('pages.home')}}" href="{{ route('pages.home') }}">
                 <i class="nav-main-link-icon fa fa-home"></i>
                 <span class="nav-main-link-name">Home</span>
               </a>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link" href="javascript:void(0)">
+              <a class="nav-main-link {{setActiveRoute('pages.about')}}" href="{{ route('pages.about') }}">
                 <i class="nav-main-link-icon fa fa-id-card"></i>
                 <span class="nav-main-link-name">About</span>
               </a>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link" href="javascript:void(0)">
+              <a class="nav-main-link {{setActiveRoute('pages.archive')}}" href="{{ route('pages.archive') }}">
                 <i class="nav-main-link-icon fa fa-box-tissue"></i>
                 <span class="nav-main-link-name">Archive</span>
               </a>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link" href="javascript:void(0)">
+              <a class="nav-main-link {{setActiveRoute('pages.contact')}}" href="{{ route('pages.contact') }}">
                 <i class="nav-main-link-icon fa fa-envelope"></i>
                 <span class="nav-main-link-name">Contact</span>
               </a>

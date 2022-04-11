@@ -25,7 +25,12 @@ use App\Http\Controllers\TagsController;
 App::setlocale("es");
 
 // Example Routes
-Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/', [PagesController::class, 'home'])->name('pages.home');
+Route::get('about', [PagesController::class, 'about'])->name('pages.about');
+Route::get('archive', [PagesController::class, 'archive'])->name('pages.archive');
+Route::get('contact', [PagesController::class, 'contact'])->name('pages.contact');
+
+
 Route::get('blog/{post}', [BlogsController::class, 'show'])->name('blog');
 Route::get('categorias/{category}', [CategoriesController::class, 'show'])->name('categories.show');
 Route::get('tags/{tag}', [TagsController::class, 'show'])->name('tags.show');

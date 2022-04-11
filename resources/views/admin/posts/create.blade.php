@@ -20,7 +20,7 @@
 			                    <strong>{!! $errors->first('title', ':message') !!}</strong>
 			                </span>
 		            	@endif
-
+<br>
        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button class="btn btn-primary">Create post</button>
                 </div>
