@@ -47,9 +47,12 @@ class PostsController extends Controller
     {
         $this->validate($request, [
                 'title' => 'required|min:10',
+                'url' => 'unique:posts',
              ]);
 
         $post = Post::create($request->only('title'));
+        $post->url = Str::slug($request->get('title')) . "-{$post->id}";
+        $post->save();
 
         return redirect()->route('admin.posts.edit',$post);
     }
