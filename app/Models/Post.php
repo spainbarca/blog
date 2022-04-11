@@ -10,6 +10,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory;
+
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
+
     protected $fillable = [
         'title',
         'body',

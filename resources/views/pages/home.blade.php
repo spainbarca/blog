@@ -22,7 +22,7 @@
 @section('content')
 
     <!-- Hero -->
-    <div class="bg-image my-2" style="background-image: url('media/photos/photo12@2x.jpg');">
+    <div class="bg-image my-2" style="background-image: url({{asset('media/photos/photo12@2x.jpg')}});">
         <div class="bg-gd-white-op-r">
             <div class="content py-6">
                 <h3 class="text-black-75 text-center text-sm-end mb-0">
@@ -115,7 +115,7 @@
                         @if ($post->photos->count() == 1)
                             <div class="block-content pb-10 bg-image"
                                 style="background-image: url('{{ $post->photos->first()->url }}');">
-                                <span class="badge bg-danger fw-bold p-2 text-uppercase">
+                                <span class="badge bg-primary fw-bold p-2 text-uppercase">
                                     {{ $post->category->name }}
                                 </span>
                             </div>
@@ -159,9 +159,6 @@
                         @else
                             <div class="block-content pb-6 bg-image" style="background-image:
                             url('https://www.teahub.io/photos/full/303-3034192_default-banner-banner-jpg.jpg');">
-                                <span class="badge bg-danger fw-bold p-2 text-uppercase">
-                                    {{ $post->category->name }}
-                                </span>
                             </div>
                         @endif
 
@@ -172,7 +169,7 @@
                                 </div>
                                 <div class="col-sm-6 col-lg-6 d-flex flex-row-reverse">
                                   <div class="block block-rounded">
-                                    <button class="badge bg-danger fw-bold p-2 text-uppercase" onclick="location.href='{{route('categories.show', $post->category)}}';">
+                                    <button class="badge bg-primary fw-bold p-2 text-uppercase" onclick="location.href='{{route('categories.show', $post->category)}}';">
                                         {{ $post->category->name }}
                                     </button>
                                   </div>
@@ -191,7 +188,7 @@
                             <div class="row g-0 fs-sm text-center">
                                 <div class="col-4">
                                     <span class="text-muted fw-semibold">
-                                        <i class="fa fa-fw fa-images opacity-50 me-1"></i> {{ $post->photos->count() }}
+                                        <i class="fa fa-fw fa-eye opacity-50 me-1"></i> 20
                                     </span>
                                 </div>
                                 <div class="col-4">
@@ -211,7 +208,7 @@
                             <div class="d-flex bd-highlight ">
                                 <div class="me-auto bd-highlight">
                                     <button type="button" class="btn btn-sm btn-alt-primary me-1 mb-0"
-                                        onclick="location.href='blog/{{ $post->id }}'">
+                                    onclick="location.href='{{route('blog', $post)}}';">
                                         <i class="fa fa-fw fa-eye me-1"></i> Read More
                                     </button>
                                 </div>
